@@ -43,7 +43,7 @@ build: $(OBJ)
 	$(CC) $(CXXFLAGS) -o $(BIN_FOLDER)$(TARGET) $(OBJ)
 
 run: $(EXE)
-	$(EXE)
+	$(EXE) -I ./assets/inputFile.txt -O ./out/output.txt
 
 $(OBJ_FOLDER)%.o: $(SRC_FOLDER)%.cpp
 	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
