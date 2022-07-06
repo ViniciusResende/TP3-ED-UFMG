@@ -10,11 +10,14 @@ class Tree {
   public:
     Tree();
     void insert(Email* email);
+    bool pop(int emailId);
     Email* search(int emailId);
     void cleanUp();
     ~Tree();
   private:
-    void recursiveInsertion(Node* &currentNode, Email* email);
+    void recursiveInsert(Node* &currentNode, Email* email);
+    bool recursivePop(Node* &currentNode, int emailId);
+    void transferChildAncestor(Node* nodeBeingRemoved, Node* ancestor);
     Email* recursiveSearch(Node* currentNode, int emailId);
     void recursiveDeleteAll(Node* currentNode);
     Node* root;
