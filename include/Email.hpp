@@ -8,6 +8,7 @@ class Email {
   public:  
     Email(int id, std::string message);
     int getEmailId();
+    std::string getEmailMessage();
 
     ~Email();
 

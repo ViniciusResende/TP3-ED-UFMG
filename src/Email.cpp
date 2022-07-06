@@ -9,6 +9,10 @@ int Email::getEmailId() {
   return this->_id;
 }
 
+std::string Email::getEmailMessage() {
+  return this->message;
+}
+
 Email::~Email() {
   this->message.clear();
   this->_id = -1;
