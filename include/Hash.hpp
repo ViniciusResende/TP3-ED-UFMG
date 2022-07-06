@@ -1,5 +1,5 @@
-#ifndef NODEH
-#define NODEH
+#ifndef HASHH
+#define HASHH
 
 #include "Email.hpp"
 #include "msgassert.h"
