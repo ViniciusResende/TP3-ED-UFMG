@@ -92,11 +92,25 @@ void Server::handleMailSearch() {
   if(searchedMail != NULL)
     this->outputFile << searchedMail->getEmailMessage();
   else 
-    this->outputFile << SEARCHED_MAIL_NOT_FOUND;
+    this->outputFile << SEARCHED_MAIL_NOT_FOUND_MESSAGE;
 
   this->outputFile << std::endl;
 }
 
 void Server::handleMailDelete() {
+  int userId = -1;
+  int emailId = -1;
 
+  inputFile >> userId;
+  inputFile >> emailId;
+
+  errorAssert(userId >= 0, "User id wasn't provided at mail search");
+  errorAssert(emailId >= 0, "Email id wasn't provided at mail search");
+
+  bool mailWasSuccessfullyDeleted = this->userTable->pop(userId, emailId);
+  this->outputFile 
+    << (mailWasSuccessfullyDeleted 
+      ? MAIL_SUCCESS_ON_DELETE_MESSAGE 
+      : MAIL_FAIL_ON_DELETE_MESSAGE) 
+    << std::endl;
 }
