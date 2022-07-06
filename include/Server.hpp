@@ -9,7 +9,7 @@
 
 class Server {
   public:  
-    Server(char inputFileName[]);
+    Server(char inputFileName[], char outputFileName[]);
     void run();
     ~Server();
 
@@ -21,5 +21,6 @@ class Server {
 
     Hash* userTable;
     std::ifstream inputFile;
+    std::ofstream outputFile;
 };
 #endif

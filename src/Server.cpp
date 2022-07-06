@@ -2,10 +2,14 @@
 #include "CONSTANTS.hpp"
 #include <iostream>
 
-Server::Server(char inputFileName[]) {
+Server::Server(char inputFileName[], char outputFileName[]) {
   this->userTable = NULL;
+
   this->inputFile = std::ifstream(inputFileName);
-  errorAssert(this->inputFile.is_open(), "\nFailed to open input file");
+  errorAssert(this->inputFile.is_open(), "Failed to open input file");
+
+  this->outputFile = std::ofstream(outputFileName);
+  errorAssert(this->inputFile.is_open(), "Failed to open input file");
 }
 
 void Server::run() {
@@ -60,6 +64,15 @@ void Server::handleMailInsertion() {
 
   Email *newMail = new Email(emailId, emailMessage);
   this->userTable->insert(userId, newMail);
+
+  this->outputFile 
+    << "OK: MENSAGEM " 
+    << emailId 
+    << " PARA " 
+    << userId 
+    << " ARMAZENADA EM " 
+    << userTable->getHashIdx(userId)
+    << std::endl;
 }
 
 void Server::handleMailSearch() {
@@ -74,14 +87,14 @@ void Server::handleMailSearch() {
 
   Email *searchedMail = this->userTable->searchEmail(userId, emailId);
 
-  std::cout << SEARCH_MAIL_TAG << " " << userId << " " << emailId << ": ";
+  this->outputFile << SEARCH_MAIL_TAG << " " << userId << " " << emailId << ": ";
 
   if(searchedMail != NULL)
-    std::cout << searchedMail->getEmailMessage();
+    this->outputFile << searchedMail->getEmailMessage();
   else 
-    std::cout << SEARCHED_MAIL_NOT_FOUND;
+    this->outputFile << SEARCHED_MAIL_NOT_FOUND;
 
-  std::cout << std::endl;
+  this->outputFile << std::endl;
 }
 
 void Server::handleMailDelete() {

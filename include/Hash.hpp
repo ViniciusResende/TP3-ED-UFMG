@@ -12,11 +12,11 @@ class Hash {
     void insert(int userId, Email* email);
     void pop(int userId, int emailId);
     Email* searchEmail(int userId, int emailId);
+    int getHashIdx(int key);
     ~Hash();
 
   private:
     int hashTableSize;
-    int getHashIdx(int key);
     Tree *Table;
 };
 
