@@ -13,6 +13,11 @@ void Hash::insert(int userId, Email* email) {
   this->Table[hashTableInsertionIdx].insert(email);
 }
 
+bool Hash::pop(int userId, int emailId) {
+  int hashTableInsertionIdx = this->getHashIdx(userId);
+  return this->Table[hashTableInsertionIdx].pop(emailId);
+}
+
 Email* Hash::searchEmail(int userId, int emailId) {
   int hashTableSearchIdx = this->getHashIdx(userId);
   return this->Table[hashTableSearchIdx].search(emailId);

@@ -10,7 +10,7 @@ class Hash {
   public:  
     Hash(int hashTableSize);
     void insert(int userId, Email* email);
-    void pop(int userId, int emailId);
+    bool pop(int userId, int emailId);
     Email* searchEmail(int userId, int emailId);
     int getHashIdx(int key);
     ~Hash();
