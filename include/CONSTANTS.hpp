@@ -9,3 +9,19 @@
 #ifndef DELETE_MAIL_TAG
 #define DELETE_MAIL_TAG "APAGA"
 #endif
+
+#ifndef MAIL_MESSAGE_MAX_SIZE
+#define MAIL_MESSAGE_MAX_SIZE 200
+#endif
+
+#ifndef MAIL_WORD_MIN_SIZE
+#define MAIL_WORD_MIN_SIZE 1
+#endif
+
+#ifndef MAIL_WORD_MAX_SIZE
+#define MAIL_WORD_MAX_SIZE 40
+#endif
+
+#ifndef SEARCHED_MAIL_NOT_FOUND
+#define SEARCHED_MAIL_NOT_FOUND "MENSAGEM INEXISTENTE"
+#endif
