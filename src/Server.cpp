@@ -114,3 +114,9 @@ void Server::handleMailDelete() {
       : MAIL_FAIL_ON_DELETE_MESSAGE) 
     << std::endl;
 }
+
+Server::~Server() {
+  delete this->userTable;
+  this->inputFile.close();
+  this->outputFile.close();
+}
