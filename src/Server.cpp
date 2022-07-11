@@ -58,11 +58,11 @@ void Server::handleMailInsertion() {
     emailMessage.append(" ");
 
     errorAssert(currentWord.size() <= MAIL_WORD_MAX_SIZE, "Mail word exceeds character limit");
-    errorAssert(currentWord.size() > MAIL_WORD_MIN_SIZE, "Mail word is smaller than minimum size");
+    errorAssert(currentWord.size() >= MAIL_WORD_MIN_SIZE, "Mail word is smaller than minimum size");
   }
   emailMessage.pop_back();
 
-  Email *newMail = new Email(emailId, emailMessage);
+  Email *newMail = new Email(emailId, userId, emailMessage);
   this->userTable->insert(userId, newMail);
 
   this->outputFile 

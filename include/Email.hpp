@@ -6,8 +6,9 @@
 
 class Email {
   public:  
-    Email(int id, std::string message);
+    Email(int id, int userId, std::string message);
     int getEmailId();
+    int getEmailUserId();
     std::string getEmailMessage();
 
     ~Email();
@@ -15,6 +16,7 @@ class Email {
   private:
     std::string message;
     int _id;
+    int _userId;
 };
 
 #endif

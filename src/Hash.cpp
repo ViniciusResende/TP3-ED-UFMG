@@ -15,12 +15,18 @@ void Hash::insert(int userId, Email* email) {
 
 bool Hash::pop(int userId, int emailId) {
   int hashTableInsertionIdx = this->getHashIdx(userId);
-  return this->Table[hashTableInsertionIdx].pop(emailId);
+  return this->Table[hashTableInsertionIdx].pop(emailId, userId);
 }
 
 Email* Hash::searchEmail(int userId, int emailId) {
   int hashTableSearchIdx = this->getHashIdx(userId);
-  return this->Table[hashTableSearchIdx].search(emailId);
+
+  Email *searchedMail = this->Table[hashTableSearchIdx].search(emailId);
+
+  if(searchedMail != NULL && searchedMail->getEmailUserId() == userId) 
+    return searchedMail;
+  else
+    return NULL;
 }
 
 int Hash::getHashIdx(int key) {

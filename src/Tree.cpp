@@ -21,21 +21,24 @@ void Tree::recursiveInsert(Node* &currentNode, Email* email) {
   currentNode = new Node(email);
 }
 
-bool Tree::pop(int emailId) {
-  return this->recursivePop(this->root, emailId);
+bool Tree::pop(int emailId, int userId) {
+  return this->recursivePop(this->root, emailId, userId);
 }
 
-bool Tree::recursivePop(Node* &currentNode, int emailId) {
+bool Tree::recursivePop(Node* &currentNode, int emailId, int userId) {
   Node *aux;
 
   if(currentNode == NULL)
     return false;
   
   if(emailId < currentNode->email->getEmailId())
-    return this->recursivePop(currentNode->left, emailId);
+    return this->recursivePop(currentNode->left, emailId, userId);
   else if (emailId > currentNode->email->getEmailId())
-    return this->recursivePop(currentNode->right, emailId);
+    return this->recursivePop(currentNode->right, emailId, userId);
   else {
+    if(currentNode->email->getEmailUserId() != userId) 
+      return false;
+
     if(currentNode->right == NULL) {
       aux = currentNode;
       currentNode = currentNode->left;
