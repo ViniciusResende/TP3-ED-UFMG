@@ -21,4 +21,5 @@ std::string Email::getEmailMessage() {
 Email::~Email() {
   this->message.clear();
   this->_id = -1;
+  this->_userId = -1;
 }
