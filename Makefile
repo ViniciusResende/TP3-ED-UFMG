@@ -45,6 +45,12 @@ build: $(OBJ)
 run: $(EXE)
 	$(EXE) -I ./assets/inputFile.txt -O ./out/output.txt
 
+test: $(EXE)
+	$(EXE) -I ./assets/entrada_1.txt -O ./out/output_1.txt
+	$(EXE) -I ./assets/entrada_2.txt -O ./out/output_2.txt
+	$(EXE) -I ./assets/entrada_3.txt -O ./out/output_3.txt
+	$(EXE) -I ./assets/entrada_4.txt -O ./out/output_4.txt
+
 $(OBJ_FOLDER)%.o: $(SRC_FOLDER)%.cpp
 	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
 
