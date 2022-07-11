@@ -32,3 +32,8 @@ Email* Hash::searchEmail(int userId, int emailId) {
 int Hash::getHashIdx(int key) {
   return key % this->hashTableSize;
 }
+
+Hash::~Hash() {
+  this->hashTableSize = -1;
+  free(this->Table);
+}
