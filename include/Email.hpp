@@ -3,6 +3,7 @@
 
 #include <string>
 #include "memlog.h"
+#include "msgassert.h"
 
 class Email {
   public:  

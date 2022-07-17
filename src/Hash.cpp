@@ -5,7 +5,7 @@ Hash::Hash(int hashTableSize) {
   this->hashTableSize = hashTableSize;
 
   this->Table = (Tree*) malloc(this->hashTableSize * sizeof(Tree));
-  errorAssert(Table != NULL, "Failed to allocate Hash Table memory");
+  errorAssert(Table != NULL && Table != nullptr, "Failed to allocate Hash Table memory");
 }
 
 void Hash::insert(int userId, Email* email) {
@@ -34,6 +34,8 @@ int Hash::getHashIdx(int key) {
 }
 
 Hash::~Hash() {
+  warnAssert(this->hashTableSize != -1, "Hash table was already destroyed.");
+
   this->hashTableSize = -1;
   free(this->Table);
 }

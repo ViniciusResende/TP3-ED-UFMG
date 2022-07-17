@@ -90,8 +90,5 @@ int main(int argc, char ** argv) {
 
   mail->run();
 
-  // globalTree->print();
-  // std::cout << std::endl;
-
   return endUpMemLog();
 }

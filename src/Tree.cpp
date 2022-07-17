@@ -82,6 +82,7 @@ Email* Tree::recursiveSearch(Node* currentNode, int emailId) {
 }
 
 void Tree::cleanUp() {
+  warnAssert(this->root != NULL, "Cleaning already empty Tree");
   this->recursiveDeleteAll(this->root);
   this->root = NULL;
 }

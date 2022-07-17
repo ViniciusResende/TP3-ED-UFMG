@@ -32,6 +32,8 @@ void Server::inputFileReader() {
       this->handleMailSearch();
     else if(buffer == DELETE_MAIL_TAG)
       this->handleMailDelete();
+
+    buffer.clear();
   }
 }
 
@@ -46,7 +48,7 @@ void Server::handleMailInsertion() {
 
   errorAssert(userId >= 0, "User id wasn't provided at mail insertion");
   errorAssert(emailId >= 0, "Email id wasn't provided at mail insertion");
-  errorAssert(messageLength >= 0, "Invalid message length provided at mail insertion");
+  errorAssert(messageLength > 0, "Invalid message length provided at mail insertion");
   errorAssert(messageLength <= MAIL_MESSAGE_MAX_SIZE, "Number of words in the mail message exceeds the limit of 200");
 
   std::string emailMessage;

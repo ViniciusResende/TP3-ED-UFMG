@@ -3,6 +3,8 @@
 Email::Email(int id, int userId, std::string message) {
   this->_id = id;
   this->_userId = userId;
+
+  errorAssert(!message.empty(), "Can't create email with empty string message.");
   this->message = message;
 }
 
@@ -19,6 +21,8 @@ std::string Email::getEmailMessage() {
 }
 
 Email::~Email() {
+  warnAssert(this->_id != -1, "Mail instance has already been destroyed.");
+
   this->message.clear();
   this->_id = -1;
   this->_userId = -1;
