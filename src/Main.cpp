@@ -86,6 +86,8 @@ int main(int argc, char ** argv) {
   else 
     deactivateMemLog();
 
+  setFaseMemLog(0);
+  
   Server *mail = new Server(config.inputFile, config.outputFile);
 
   mail->run();

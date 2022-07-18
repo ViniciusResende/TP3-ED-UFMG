@@ -6,9 +6,12 @@ Email::Email(int id, int userId, std::string message) {
 
   errorAssert(!message.empty(), "Can't create email with empty string message.");
   this->message = message;
+
+  WRITEMEMLOG((long int) (&(this->_id)), sizeof(int), this->_userId);
 }
 
 int Email::getEmailId() {
+  READMEMLOG((long int) (&(this->_id)), sizeof(int), this->_userId);
   return this->_id;
 }
 
