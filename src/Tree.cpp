@@ -42,11 +42,11 @@ bool Tree::recursivePop(Node* &currentNode, int emailId, int userId) {
     if(currentNode->right == NULL) {
       aux = currentNode;
       currentNode = currentNode->left;
-      free(aux);
+      delete aux;
     } else if(currentNode->left == NULL) {
       aux = currentNode;
       currentNode = currentNode->right;
-      free(aux);
+      delete aux;
     } else
       this->transferChildAncestor(currentNode, currentNode->left);
 
@@ -54,14 +54,14 @@ bool Tree::recursivePop(Node* &currentNode, int emailId, int userId) {
   }
 }
 
-void Tree::transferChildAncestor(Node* nodeBeingRemoved, Node* ancestor) {
+void Tree::transferChildAncestor(Node* nodeBeingRemoved, Node* &ancestor) {
   if(ancestor->right != NULL) 
     return this->transferChildAncestor(nodeBeingRemoved, ancestor->right);
-  
+
   nodeBeingRemoved->email = ancestor->email;
   nodeBeingRemoved = ancestor;
   ancestor = ancestor->left;
-  free(nodeBeingRemoved);
+  delete nodeBeingRemoved;
 }
 
 Email* Tree::search(int emailId) {

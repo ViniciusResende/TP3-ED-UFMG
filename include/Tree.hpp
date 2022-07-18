@@ -80,7 +80,7 @@ class Tree {
      * transfer it's childs to a new parent.
      * @param ancestor The Tree node that is being considered as a new parent.
      */
-    void transferChildAncestor(Node* nodeBeingRemoved, Node* ancestor);
+    void transferChildAncestor(Node* nodeBeingRemoved, Node* &ancestor);
     /**
      * @brief Function responsible for searching an email by its id using an 
      * recursive approach to find the desired email.

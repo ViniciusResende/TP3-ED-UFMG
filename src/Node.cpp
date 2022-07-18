@@ -8,6 +8,4 @@ Node::Node(Email* email) {
   this->right = NULL;
 }
 
-Node::~Node() {
-  delete this->email;
-};
+Node::~Node() {};
